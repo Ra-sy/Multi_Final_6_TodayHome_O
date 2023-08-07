@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="test.com.todayhome">
+
+	<select id="EV_SELECT_ALL" parameterType="java.util.Map" resultType="test.com.todayhome.model.EventVO">
+		select * from event 
+		order by enddate asc
+	</select>
+	<select id="EV_SELECT_ONE" parameterType="java.util.Map" resultType="test.com.todayhome.model.EventVO">
+		select * from event 
+		where num=#{num}
+	</select>
+	
+	<select id="E_BANNER"
+		resultType="test.com.todayhome.model.EventVO">
+		select * from event order by dbms_random.value
+	</select>
+
+</mapper>

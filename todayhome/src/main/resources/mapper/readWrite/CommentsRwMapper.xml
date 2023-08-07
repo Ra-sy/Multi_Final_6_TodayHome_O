@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="test.com.todayhome.mapper">
+
+   <insert id="addComment" parameterType="test.com.todayhome.model.CommentsVO">
+    <selectKey keyProperty="cnt" resultType="int" order="AFTER">
+        SELECT COUNT(*) FROM BOARD_COMMENTS WHERE BRD_NUM = #{brdNum}
+    </selectKey>
+    INSERT INTO BOARD_COMMENTS (NUM, BRD_NUM, MBR_NUM, NICKNAME, CONTENT)
+    VALUES (SEQ_COMMENTS.nextval, #{brdNum}, #{mbrNum}, #{nickname}, #{content})
+  </insert>
+
+  <update id="updateComment" parameterType="test.com.todayhome.model.CommentsVO">
+    UPDATE BOARD_COMMENTS SET CONTENT = #{content}, WDATE = SYSDATE WHERE NUM = #{num}
+  </update>
+
+  <delete id="deleteComment" >
+    DELETE FROM BOARD_COMMENTS WHERE NUM = #{num}
+  </delete>
+
+    <delete id="deleteCommentsWithDeleteMember" parameterType="test.com.todayhome.model.MemberVO">
+        DELETE FROM BOARD_COMMENTS WHERE MBR_NUM = #{num}
+    </delete>
+
+    <delete id="cmtDeleteBoardDelete" parameterType="test.com.todayhome.model.BoardVO">
+        DELETE FROM BOARD_COMMENTS WHERE BRD_NUM = #{num}
+    </delete>
+</mapper>

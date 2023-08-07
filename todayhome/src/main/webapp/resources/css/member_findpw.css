@@ -1,0 +1,142 @@
+@charset "UTF-8";
+
+.fixed-menu {
+	position: fixed;
+	top: 0;
+	left: 0;
+	right: 0;
+	z-index: 999;
+}
+
+.mail-input-wrap {
+	margin-top: 220px;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	border: 0px solid red;
+	width: 1200px;
+	margin-left: auto;
+	margin-right: auto;
+}
+.mail-input-wrap2{
+	margin-top: 20px;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	border: 0px solid red;
+	width: 1200px;
+	margin-left: auto;
+	margin-right: auto;
+}
+.mail-input-wrap3{
+	margin-top: 0;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	border: 0px solid red;
+	width: 1200px;
+	margin-left: auto;
+	margin-right: auto;
+}
+
+
+.mail_input,
+.mail-check-input{
+width:280px;
+height:40px;
+}
+.mail-check-input{
+margin-left:-10px;
+}
+.btn-email-check,
+.btn-auth-check{
+    background-color: #35c5f0;
+    border: none;
+    color: #fff;
+    font-weight:bold;
+    box-shadow: none;
+    padding: 2px 5px;
+    border-radius:5px;
+    width:45px;
+    height:30px;
+    margin-left:-60px;
+}
+.btn-auth{
+background-color: #35c5f0;
+    border: none;
+    color: white;
+    font-size:16px;
+    font-weight:bold;
+    box-shadow: none;
+    padding: 2px 5px;
+    border-radius:5px;
+    width:280px;
+    height:38px;
+}
+
+.mail-check-btn,
+.mail-check-input-box,
+.mail-check-input-box-warn
+{
+	margin-top: 20px;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	border: 0px solid blue;
+	width: 1200px;
+	margin-left: auto;
+	margin-right: auto;
+}
+
+.box.int_email {
+	display: inline-flex;
+	align-items: center;
+}
+
+.box.int_email input[type="text"] {
+	margin-right: 5px;
+}
+
+.mail-check-box {
+	display: none;
+}
+.resetpw {
+/*     display: block;  */
+/*     background-color: #35c5f0; */
+/*     border: none; */
+/*     color: #fff; */
+/*     font-weight:bold; */
+/*     box-shadow: none; */
+/*     padding: 2px 5px; */
+/*     border-radius:5px; */
+/*     width:45px; */
+/*     height:30px; */
+/*     margin-left:-60px; */
+	border:0px solid red;
+	margin-top: 20px;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	width: 280px;
+	height:40px;
+	margin-left: auto;
+	margin-right: auto;
+	
+	background-color: #35c5f0;
+	color: white;
+	border-radius:5px;
+	font-weight:bold;
+	font-size:16px;
+	text-decoration: none;
+	
+}
+
+.mail-non{
+	font-size:13px;
+	color:red;
+	margin-top:10px;
+}
+.mail-check-input-box-warn{
+	font-size:13px;
+	
+}

@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="test.com.todayhome.mapper">
+    <select id="flwSelectAllNum" resultType="test.com.todayhome.model.FollowVO" parameterType="test.com.todayhome.model.BoardVO">
+        SELECT
+            f.NUM,
+            f.MBR_NUM,
+            m.NICKNAME MBR_NICKNAME,
+            m.IMG MBR_IMG,
+            m.INTRODUCE MBR_INTRODUCE,
+            COUNT(*) OVER(PARTITION BY f.NUM) CNT
+        FROM FOLLOW f, MEMBER m
+        WHERE f.MBR_NUM = m.NUM
+          AND f.NUM = #{usrMnum}
+        ORDER BY f.NUM ASC
+    </select> <!--followTo-->
+    <select id="flwSelectAllMbrNum" resultType="test.com.todayhome.model.FollowVO" parameterType="test.com.todayhome.model.MemberVO">
+        SELECT
+            f.NUM,
+            f.MBR_NUM,
+            m.NICKNAME MBR_NICKNAME,
+            m.IMG MBR_IMG,
+            m.INTRODUCE MBR_INTRODUCE,
+            COUNT(*) OVER(PARTITION BY f.MBR_NUM) CNT
+        FROM FOLLOW f, MEMBER m
+        WHERE f.NUM = m.NUM
+          AND f.MBR_NUM = #{num}
+        ORDER BY f.NUM ASC
+    </select> <!--followFrom-->
+    <select id="flwCheck" resultType="test.com.todayhome.model.FollowVO" parameterType="test.com.todayhome.model.BoardVO">
+        SELECT
+            NUM,
+            MBR_NUM
+        FROM FOLLOW
+        WHERE NUM = #{usrMnum}
+        AND MBR_NUM = #{brdMnum}
+    </select>
+
+
+</mapper>

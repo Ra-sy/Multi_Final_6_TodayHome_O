@@ -1,0 +1,178 @@
+ @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR&display=swap');
+ @import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+KR&family=Noto+Sans+KR&display=swap');
+*{
+/* 	font-family: 'Noto Sans KR', sans-serif; */
+	font-family: 'IBM Plex Sans KR', sans-serif;
+}
+.fixed-menu {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 999;
+}
+body{
+margin-top:200px;
+}
+
+.banner-random-board{
+border:0px solid blue;
+width:860px;
+overflow: hidden;
+
+}
+.banner-random-event{
+border:0px solid yellow;
+width:350px;
+/* margin-left: auto; */
+}
+.more{
+border: 0px solid red;
+    display: flex;
+    width:1170px;
+    margin:20px auto;
+}
+.more-a-tag{
+border: 0px solid pink;
+margin-left:auto;
+}
+.more a{
+margin-left:20px;
+text-decoration:none;
+color:#35C5F0;
+font-size:17px;
+ font-weight: bold; 
+}
+.more-exp{
+font-size:20px;
+ font-weight: bold; 
+}
+.more-list{
+border: 0px solid blue;
+    display: flex;
+    width:1200px;
+    margin:20px auto;
+    
+}
+
+.homes-wrap{
+margin:10px;
+border: 0px solid blue;
+margin-bottom:30px;
+}
+.homes-wrap a{
+color:black;
+text-decoration:none;
+}
+
+.s_banner_img1-wrap{
+  width: 800px; /* 고정된 너비 */
+  height: 460px; /* 고정된 높이 */
+  overflow: hidden; /* 넘치는 내용 숨김 */
+  border-radius: 5px;
+  margin:12px;
+  position:relative;
+  margin-left:20px;
+}
+.s_banner_img1{
+  width: 100%;
+  height: 100%;
+  border-radius: 5px;
+  transition: transform 0.3s, filter 0.3s;
+  object-fit: cover; 
+}
+.s_banner_img1:hover {
+  transform: scale(1.05);
+  filter: brightness(90%);
+}
+.s_banner_text{
+	 font-size: 35px;
+  font-weight: bold;
+  margin-top: 10px;
+  margin-bottom: 5px;
+  white-space: nowrap;	/*줄바꿈방지*/
+  overflow: hidden;
+  text-overflow: ellipsis; /*txt길면 ...표시*/
+  width:750px;
+  border:0px solid red;
+    	margin-left: auto;  
+  	margin-right: auto;  
+
+
+}
+
+.e-banner-img-wrap{
+   width: 300px; /* 고정된 너비 */
+  height: 460px; /* 고정된 높이 */
+  overflow: hidden; /* 넘치는 내용 숨김 */
+  border-radius: 5px;
+  margin:12px;
+  position:relative;
+}
+.e-banner-img{
+  width: 100%;
+  height: 100%;
+  border-radius: 5px;
+  transition: transform 0.3s, filter 0.3s;
+  object-fit: cover;
+}
+.e-banner-img:hover {
+  transform: scale(1.05);
+  filter: brightness(90%);
+}
+
+
+.liimg {
+  width: 270px; /* 고정된 너비 */
+  height: 170px; /* 고정된 높이 */
+  overflow: hidden; /* 넘치는 내용 숨김 */
+  border-radius: 5px;
+  margin-right:5px;
+}
+
+.home-img {
+  width: 100%;
+  height: 100%;
+  border-radius: 5px;
+  transition: transform 0.3s, filter 0.3s;
+    object-fit: cover; 
+}
+.home-img:hover {
+  transform: scale(1.05);
+  filter: brightness(90%);
+}
+
+.litext{
+  font-size: 15px;
+/*   font-weight: normal; */
+  margin-top: 10px;
+  margin-bottom: 5px;
+/*   white-space: nowrap;	줄바꿈방지 */
+  overflow: hidden;
+  text-overflow: ellipsis; /*txt길면 ...표시*/
+  width:240px;
+  height:40px;
+  border:0px solid red;
+    	margin-left: auto;  
+  	margin-right: auto;  
+}
+.banner-random-nick{
+display:flex;
+}
+.banner-random-inside{
+border:0px solid red;
+}
+.banner {
+  display: flex;
+  width:1200px;
+  margin:20px auto;
+  border: 0px solid red;
+}
+
+.s_banner {
+  flex: 1;
+}
+
+.side_banner {
+  flex: 1;
+}

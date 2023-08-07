@@ -1,0 +1,74 @@
+.content{
+    /*border: 1px solid orchid;*/
+    margin: 0 auto;
+    width: 99%;
+    height: auto;
+}
+
+.board-set-wrapper{
+    /*border: 1px solid blue;*/
+    margin: 0 auto;
+    padding-left: 10px;
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.board-set{
+    /*border: 1px solid red;*/
+    position: relative;
+    margin: 15px 10px 0px 0px;
+    width: fit-content;
+    height: fit-content;
+}
+
+.board-set img{
+    height: 173px;
+    width: 173px;
+    border-radius: 4px;
+}
+
+.board-set-btn{
+    display: flex;
+    justify-content: space-evenly;
+}
+
+.board-set-btn div div{
+    /*border: 1px solid black;*/
+    display: flex;
+    justify-content: center;
+    font-family: 'IBM Plex Sans KR', sans-serif;
+    font-weight: bold;
+}
+
+.btn{
+    position: relative;
+    width: 54px;
+    height: 45px;
+    padding: 14px;
+    margin: 0 auto;
+    box-sizing: border-box;
+    border: none;
+    background: #fff;
+    font-size: 24px;
+    line-height: 0;
+    transition: border-color .2s,color .2s,background-color .2s;
+}
+.btn:hover{
+    opacity: 70%;
+}
+
+.btn.favor {
+    background-image: url(../icon/heart.png);
+    background-color: transparent;
+    background-repeat: no-repeat;
+    background-position: 9px 9px;
+    background-size: 35px 35px;
+}
+
+.btn.comments {
+    background-image: url(../icon/speechBalloon.png);
+    background-color: transparent;
+    background-repeat: no-repeat;
+    background-position: 9px 9px;
+    background-size: 35px 35px;
+}

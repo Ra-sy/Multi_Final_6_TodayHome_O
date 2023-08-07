@@ -1,0 +1,96 @@
+.side {
+    margin-top: 160px;
+    position:absolute;
+    top: 600px;
+    right: 0;
+    width: calc(50% - 500px);
+    height: 150vh;
+}
+
+.sticky-area {
+    position: sticky;
+    top: 240px;
+    width: 80px;
+    margin: 0px auto;
+}
+.sticky-btn {
+    position: relative;
+    display: block;
+    width: 54px;
+    height: 54px;
+    padding: 14px;
+    margin: 0 auto;
+    box-sizing: border-box;
+    background: #fff;
+    border: 1px solid #dadce0;
+    color: #828c94;
+    border-radius: 100%;
+    font-size: 24px;
+    line-height: 0;
+    box-shadow: 1px 3px 4px 0 rgba(209,213,217,.2);
+    transition: border-color .2s,color .2s,background-color .2s;
+}
+.sticky-btn:hover{
+    opacity: 70%;
+}
+.sticky-btn.favor-btn {
+    background-image: url(../icon/heart.png);
+    background-color: transparent;
+    background-repeat: no-repeat;
+    background-position: 9px 9px;
+    background-size: 35px 35px;
+}
+.sticky-btn.favor-btn.on {
+    background-image: url(../icon/heart_full.png);
+}
+.sticky-btn.comments-btn {
+    background-image: url(../icon/speechBalloon.png);
+    background-color: transparent;
+    background-repeat: no-repeat;
+    background-position: 9px 9px;
+    background-size: 35px 35px;
+}
+.sticky-btn.top-btn {
+    background-image: url(../icon/arrowUp.png);
+    background-color: transparent;
+    background-repeat: no-repeat;
+    background-position: 9px 9px;
+    background-size: 35px 35px;
+}
+.sticky-counter {
+    margin: 4px 0 15px;
+    display: block;
+    min-height: 20px;
+    color: #525b61;
+    font-size: 14px;
+    line-height: 20px;
+    text-align: center;
+}
+
+.btn-follow::before {
+    content: '+ 팔로우';
+}
+.btn-follow {
+    box-sizing: border-box;
+    color: #fff;
+    height: 30px;
+    font-size: 20px;
+    border-color: #35c5f0;
+    background-color: #35c5f0;
+    border: none;
+    line-height: 0;
+    transition: border-color .2s,color .2s,background-color .2s;
+    border-radius: 8px;
+    padding: 0px 5px;
+    font-family: 'IBM Plex Sans KR', sans-serif;
+    font-weight: bold;
+}
+.btn-follow:hover{
+    opacity: 80%;
+}
+.btn-follow.on::before {
+    content: '✓ 팔로잉';
+}
+.btn-follow.on {
+    background-color: lightgray;
+}

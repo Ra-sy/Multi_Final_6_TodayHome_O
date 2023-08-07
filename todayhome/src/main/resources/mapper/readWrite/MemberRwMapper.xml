@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="test.com.todayhome">
+
+
+	<select id="EMAIL_CHECK" resultType="test.com.todayhome.model.MemberVO">
+		select * from member where email = #{email}
+	</select>
+
+	<update id="PW_UPDATE">
+		update member set pw=#{pw}
+		where num=#{num}
+	</update>
+
+	<select id="PWCHECK" resultType="test.com.todayhome.model.MemberVO">
+		select * from member where email = #{email} and pw = #{pw}
+	</select>
+
+	<update id="MUPDATE" parameterType="test.com.todayhome.model.MemberVO">
+	  UPDATE member
+	  <set>
+	    <if test="nickname != null">nickname = #{nickname},</if>
+	    <if test="sex != null">sex = #{sex},</if>
+	    <if test="img != null">img = #{img},</if>
+	    <if test="introduce != null">introduce = #{introduce}</if>
+	  </set>
+	  WHERE num = #{num}
+	</update>
+
+	<delete id="MDELETE">
+		delete from member where num = #{num}
+	</delete>
+
+	<insert id="insertMember" parameterType="test.com.todayhome.model.MemberVO">
+		INSERT INTO member (email, pw, nickname, sex, birth, img, introduce)
+		VALUES (#{email}, #{pw}, #{nickname}, #{sex}, #{birth}, #{profileImage.originalFilename}, #{introduce} ? 'Y' : 'N')
+	</insert>
+
+	<update id="updateMember" parameterType="test.com.todayhome.model.MemberVO">
+		UPDATE member SET nickname = #{nickname}, sex = #{sex}, birth = #{birth}, img = #{profileImage.originalFilename}, introduce = #{introduce}
+		WHERE email = #{email}
+	</update>
+	
+	<insert id="MINSERT" parameterType="test.com.todayhome.model.MemberVO">
+		<selectKey keyProperty="seqNxtVal" resultType="int" order="AFTER">
+			select seq_member.currval from member where rownum=1
+		</selectKey>
+		insert into member(num,name,email,pw,nickname)
+		values(seq_member.nextval, #{nickname}, #{email}, #{pw}, #{nickname})
+	</insert>
+
+</mapper>

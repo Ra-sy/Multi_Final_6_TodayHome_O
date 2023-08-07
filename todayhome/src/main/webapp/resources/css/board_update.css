@@ -1,0 +1,142 @@
+@charset "UTF-8";
+
+	.fixed-menu {
+	  position: fixed;
+	  top: 0;
+	  left: 0;
+	  right: 0;
+	  z-index: 999;
+	}
+	form{
+		margin-top:130px;
+		font-family: 'IBM Plex Sans KR', sans-serif;
+		font-weight: bold;
+	}
+	
+	.select-board{
+		border-bottom: 2px solid #EDEDED;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        margin: 50px auto 0px auto;
+		padding-bottom: 50px;
+        flex-direction: column;
+        width:800px;
+		
+	}
+    form table {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        margin: 100px auto;
+        flex-direction: column;
+        border: 0px solid red;
+        width:800px;
+    }
+	.select-board-base{
+		border: 0px solid yellow;
+/*         margin: 10px auto; */
+        font-size:20px;
+	}
+	.select-board-base select{
+		border: 1px solid gray;
+		border-radius:7px;
+        margin-left:20px;
+	}
+
+    span {
+        color: red;
+    }
+
+    #additionalForm1,
+    #additionalForm2,
+    #additionalForm3,
+    #additionalForm4 {
+        border: 2px solid #EDEDED;
+        padding: 10px;
+        margin-top: 20px;
+        margin-bottom: 10px;
+/*         max-width: 350px; */
+        width:250px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+/*         margin-left:77px; */
+        padding-right:10px;
+        padding-bottom:30px;
+        border-radius:10px;
+    }
+    
+    input[type="submit"] {
+	    background-color: #35C5F0;
+	    border: none;
+	    color: white;
+	    padding: 10px 20px;
+	    text-align: center;
+	    text-decoration: none;
+	    display: inline-block;
+	    font-size: 16px;
+	    font-weight:bold;
+	    margin: 10px;
+	    cursor: pointer;
+	    border-radius: 6px;
+	}
+	
+	input[type="submit"]:hover {
+	    background-color: #70D6F4;
+	}
+	
+	.binsert-title{
+	border: none;
+	border-bottom: 2px solid #f5f5f5;
+		width:600px;
+		height:50px;
+		font-size:20px;
+		margin-bottom:10px;
+	}
+	.binsert-thumb{
+		border: 0px solid red;
+	
+	}
+	.binsert-content{
+	margin-top:10px;
+		border: 0px solid red;
+	
+	}
+	.binsert-submit{
+		border: 0px solid red;
+		width:100px;
+		font-family: 'IBM Plex Sans KR', sans-serif;
+		font-weight: bold;
+	}
+	.hr-binsert{
+		width:700px;
+		    border-top: 2px solid #f5f5f5;
+    height: 0;
+	}
+	#additionalForm1 div,
+	#additionalForm2 div,
+	#additionalForm3 div,
+	#additionalForm4 div
+	{
+	border: 0px solid red;
+	width:250px;
+	margin-bottom:10px;
+	}
+	#additionalForm1 select,
+	#additionalForm2 select,
+	#additionalForm3 select,
+	#additionalForm4 select
+	{
+	border: 1px solid gray;
+	border-radius:7px;
+	float:right;
+	width:120px;
+	}
+
+	#thumbFile, #boardNo, #type, #familyType, #workingArea, #worker, #sqft,
+	#roomNum, #direction, #year, #location{
+		font-family: 'IBM Plex Sans KR', sans-serif;
+		font-weight: bold;
+	}

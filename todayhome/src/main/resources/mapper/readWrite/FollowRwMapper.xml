@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="test.com.todayhome.mapper">
+    <insert id="flwClickInsert" parameterType="test.com.todayhome.model.BoardVO">
+        INSERT INTO FOLLOW (NUM, MBR_NUM)
+        VALUES (#{usrMnum}, #{brdMnum})
+    </insert>
+    <delete id="flwClickDelete" parameterType="test.com.todayhome.model.BoardVO">
+        DELETE FROM FOLLOW
+        WHERE NUM = #{usrMnum}
+          AND MBR_NUM = #{brdMnum}
+    </delete>
+    <delete id="deleteFollowWithDeleteMember" parameterType="test.com.todayhome.model.MemberVO">
+        DELETE FROM FOLLOW
+        WHERE NUM = #{num}
+    </delete>
+
+</mapper>

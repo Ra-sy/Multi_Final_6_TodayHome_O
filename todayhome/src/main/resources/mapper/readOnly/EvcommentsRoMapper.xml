@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="test.com.todayhome">
+
+	<select id="EVC_SELECT_ALL" parameterType="java.util.Map" resultType="test.com.todayhome.model.EventCommentsVO">
+		select ec.num, ec.evnum, ec.wdate, ec.content, ec.mnum, m.num, m.nickname mbrNickname, m.img mbrImg
+		from event_comments ec join member m on (ec.mnum=m.num)
+		where ec.evnum=#{evnum}
+		order by ec.wdate desc
+	</select>
+
+
+</mapper>

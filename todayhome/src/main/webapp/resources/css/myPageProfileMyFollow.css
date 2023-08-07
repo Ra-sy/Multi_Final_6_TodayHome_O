@@ -1,0 +1,61 @@
+.menu-title{
+    margin: 15px 0px 7px 8px;
+    font-family: 'IBM Plex Sans KR', sans-serif;
+    font-weight: bold;
+}
+
+.swiper{
+    margin-bottom: 10px;
+    border: 2px solid #dadada;
+    border-radius: 4px;
+    width: 99% !important;
+    height: 300px !important;
+}
+
+.swiper-free-mode>.swiper-wrapper{
+    margin: 0 !important;
+}
+
+.swiper-wrapper{
+    padding: 10px;
+    width: fit-content !important;
+    height: fit-content !important;
+    overflow: hidden;
+
+    -webkit-user-select:none;
+    -moz-user-select:none;
+    -ms-user-select:none;
+    user-select:none
+}
+
+.swiper-slide{
+    width: fit-content !important;
+    height: fit-content !important;
+    display: flex;
+
+}
+
+.swiper-slide img{
+    margin-right: 5px;
+    height: 173px;
+    width: 173px;
+    border-radius: 4px;
+}
+
+.user-profile{
+    display: flex !important;
+    align-items: center !important;
+    margin-bottom: 10px !important;
+}
+
+.user-profile-img{
+    height: 45px !important;
+    width: 45px !important;
+    border-radius: 100% !important;
+}
+
+.user-profile-text{
+    margin-left: 3px !important;
+    font-family: 'IBM Plex Sans KR', sans-serif;
+    font-weight: bold;
+}

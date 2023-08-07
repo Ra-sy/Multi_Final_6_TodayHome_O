@@ -1,0 +1,119 @@
+@charset "UTF-8";
+
+*{
+    font-family: 'IBM Plex Sans KR', sans-serif;
+}
+
+.fixed-menu {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 999;
+}
+.board-housing-wrap {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto;
+    
+    border:0px solid red;
+    width:1200px;
+}
+
+.board-housing-wrap .select-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 10px;
+    margin-left: -970px; /* 살짝 왼쪽으로 이동하는 부분 */
+}
+
+.board-housing-wrap .select-container select {
+    margin-right: 10px;
+/*     margin-left: 5px;  */
+    width : 80px;
+    
+    background-color:#f5f5f5;
+    color:#757575;
+    font-size:15px;
+    font-weight:bold;
+    border:none;
+    padding-top:10px;
+    padding-bottom:10px;
+    text-align:center;
+    border-radius: 7px;
+}
+.boards-img-wrap {
+  width: 270px; /* 고정된 너비 */
+  height: 270px; /* 고정된 높이 */
+  overflow: hidden; /* 넘치는 내용 숨김 */
+  border-radius: 10px;
+  margin:12px;
+}
+
+.boards-img {
+  width: 100%;
+  height: 100%;
+  border-radius: 10px;
+  transition: transform 0.3s, filter 0.3s;
+  object-fit: cover;
+}
+
+.boards-img:hover {
+  transform: scale(1.05);
+  filter: brightness(90%);
+}
+.housing-title {
+  font-size: 18px;
+  font-weight: bold;
+  margin-top: 10px;
+  margin-bottom: 5px;
+/*   white-space: nowrap;	줄바꿈방지 */
+  overflow: hidden;
+  text-overflow: ellipsis; /*txt길면 ...표시*/
+  width:260px;
+  height:53px;
+  border:0px solid red;
+  margin-left: auto;  
+  margin-right: auto;  
+}
+
+.housing-nickname{
+	font-size:14px;
+	border:0px solid red;
+	width:260px;
+	margin-left: auto;
+	margin-right: auto;
+}
+.housing-count{
+font-size:12px;
+color:gray;
+}
+.favor-btn {
+    position: absolute;
+    bottom: 20px;
+    right: 20px;
+    width: 35px;
+    height: 35px;
+
+    background-color: transparent;
+    background-repeat: no-repeat;
+    background-size: 35px 35px;
+    border: none;
+    background-image: url(/resources/icon/heart.png);
+}
+.favor-btn.on {
+	position: absolute;
+    bottom: 20px;
+    right: 20px;
+    width: 35px;
+    height: 35px;
+
+    background-color: transparent;
+    background-repeat: no-repeat;
+    background-size: 35px 35px;
+    border: none;
+    background-image: url(/resources/icon/heart_full.png);
+}

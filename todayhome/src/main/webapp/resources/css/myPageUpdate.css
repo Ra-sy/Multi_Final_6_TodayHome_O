@@ -1,0 +1,160 @@
+@charset "UTF-8";
+
+	*{
+		font-family: 'IBM Plex Sans KR', sans-serif;
+	}
+
+	label{
+		font-weight: bold;
+	}
+
+	.fixed-menu {
+	  position: fixed;
+	  top: 0;
+	  left: 0;
+	  right: 0;
+	  z-index: 999;
+	}
+	.mupdate-head{
+		border:0px solid blue;
+		display: flex;
+	justify-content: space-between;
+	width:700px;
+	margin-left:20px;
+		
+	}
+	.mupdate-delete{
+	margin-top:25px;
+	margin-left:250px;
+	}
+	.mupdate-delete a{
+	text-decoration:none;
+	color:red;
+	font-size:13px;
+	}
+	table label{
+	border:0px solid red;
+	font-size:20px;
+	margin-top:10px;
+	}
+	table input[type="text"],
+	table input[type="file"] {
+		border: 1px solid gray;
+		border-radius:5px;
+		width: 230px;
+		float:right;
+		height:40px;
+	}
+	table input[type="radio"] {
+		border: 1px solid blue;
+		
+	}
+	table input[type="submit"] {
+		height:40px;
+		font-size:17px;
+		font-weight:bold;
+	}
+	table label:nth-child(4){
+	border:1px solid yellow;
+	margin-right:20px;
+	}
+table{
+	border-collapse: collapse;
+	border: 0px solid #35C5F0;
+	margin-top:50px;
+	margin-bottom:50px;
+	width:400px;
+
+}
+
+
+td{
+	padding:20px;
+}
+
+.mypage-update-wrapper{
+ 	border-left: 2px solid #dadada;
+ 	border-right: 2px solid #dadada;
+ 	border-bottom: 2px solid #dadada;
+/* 	padding-left:30%; */
+	margin:204px auto;
+	width:800px;
+	padding:50px;
+}
+
+#btn{
+	border: 1px blue solid white;
+	
+	border-left:1px solid white;
+	border-right:1px solid white;
+	
+	}
+	
+#x{
+	font-size: 10px;
+	color:gray;
+	padding-top: 0;
+}
+#delete{
+	font-size:12px;
+	font:red;	
+}
+
+.myButton{
+	width:100%;
+	background-color: #35C5F0;
+	color:white;
+	border:white;
+	border-radius:3px;
+}
+.nicknameButton{
+	width:110px;
+	height:30px;
+	background-color: white;
+	color:#35C5F0;
+	border:2px solid #35C5F0;
+	border-radius:3px;
+	font-size:13px;
+	font-weight:bold;
+}
+
+#imginsert{
+		
+/* 	background-color: #35C5F0; */
+/* 	color:white; */
+	border:white;
+/* 	border-radius:3px; */
+}
+
+#imgFile{
+	border: none;
+	height: min-content;
+	margin-top: 3px;
+}
+
+#emailTd{
+	padding-bottom: 10px;
+}
+
+#nicknameTd{
+	padding-bottom: 10px;
+}
+
+#nicknameButtonTd{
+	padding-top: 0;
+}
+
+input{
+	padding-left: 5px;
+}
+
+#male{
+	margin-left: 5px;
+}
+#female{
+	margin-left: 10px;
+}
+
+#delete a:hover{
+	cursor: pointer;
+}

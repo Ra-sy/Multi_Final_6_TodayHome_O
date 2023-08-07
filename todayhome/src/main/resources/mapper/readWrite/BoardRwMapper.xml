@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="test.com.todayhome.mapper">
+    <update id="bViewCountUpdate" parameterType="test.com.todayhome.model.BoardVO">
+        UPDATE BOARD
+        SET VCOUNT = VCOUNT+1
+        WHERE NUM = #{num}
+    </update>
+    <update id="bUpdate" parameterType="test.com.todayhome.model.BoardVO">
+        UPDATE BOARD
+        SET BOARD_NO = #{boardNo},
+            TITLE = #{title},
+            CONTENT = #{content},
+            IMG_THUMB = #{imgThumb},
+            TAG = #{tag},
+            TYPE = #{type},
+            LIVINGTYPE = #{livingtype},
+            COOKTYPE = #{cooktype},
+            DAILYTYPE = #{dailytype},
+            SQFT = #{sqft},
+            FAMILY_TYPE = #{familyType},
+            WORKING_AREA = #{workingArea},
+            WORKER = #{worker},
+            ROOM_NUM = #{roomNum},
+            DIRECTION = #{direction},
+            YEAR = #{year},
+            LOCATION = #{location}
+        WHERE NUM = #{num}
+    </update>
+
+    <delete id="bDelete" parameterType="test.com.todayhome.model.BoardVO">
+        DELETE FROM BOARD
+        WHERE NUM = #{num}
+    </delete>
+
+	<insert id="B_INSERT" parameterType="test.com.todayhome.model.BoardVO">
+        <selectKey keyProperty="seqNxtVal" resultType="int" order="AFTER">
+            SELECT seq_board.currval FROM BOARD WHERE ROWNUM=1
+        </selectKey>
+		insert into
+		board(num,board_no,title,content,img_thumb,tag,m_num,nickname,
+		type,livingtype,cooktype,dailytype,
+		sqft,family_type,working_area,worker,
+		room_num,direction,year,location)
+
+		values(seq_board.nextval,#{boardNo},#{title},#{content},#{imgThumb},#{tag},#{brdMnum},#{mbrNickname},
+		#{type},#{livingtype},#{cooktype},#{dailytype},
+		#{sqft},#{familyType},#{workingArea},#{worker},
+		#{roomNum},#{direction},#{year},#{location})
+
+	</insert>
+
+    <delete id="deleteBoardWithDeleteMember" parameterType="test.com.todayhome.model.MemberVO">
+        DELETE FROM BOARD
+        WHERE M_NUM = #{num}
+    </delete>
+
+</mapper>

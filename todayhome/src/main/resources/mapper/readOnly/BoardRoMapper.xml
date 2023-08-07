@@ -1,0 +1,285 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="test.com.todayhome.mapper">
+
+    <select id="bSelectAll" resultType="test.com.todayhome.model.BoardVO" parameterType="test.com.todayhome.model.BoardVO">
+        SELECT
+            b.NUM,
+            b.BOARD_NO,
+            b.TITLE,
+            b.IMG_THUMB,
+            b.M_NUM BRD_MNUM,
+            m.NICKNAME MBR_NICKNAME,
+            m.IMG MBR_IMG
+            <if test='usrMnum > 0'>
+                ,(SELECT COUNT(*) FROM FAVOR f WHERE f.mbr_num = #{usrMnum} AND f.brd_num = b.NUM) AS FvYn
+            </if>
+        FROM BOARD b, MEMBER m
+        WHERE b.M_NUM = m.NUM
+    </select>
+    <select id="bSelectAllForRandom" resultType="test.com.todayhome.model.BoardVO" parameterType="test.com.todayhome.model.BoardVO">
+        SELECT
+            b.NUM,
+            b.BOARD_NO,
+            b.TITLE,
+            b.IMG_THUMB,
+            b.M_NUM BRD_MNUM,
+            m.NICKNAME MBR_NICKNAME,
+            m.IMG mbrImg,
+            (SELECT COUNT(*) FROM BOARD) CNT
+        FROM BOARD b, MEMBER m
+        WHERE b.M_NUM = m.NUM
+        ORDER BY DBMS_RANDOM.RANDOM()
+    </select>
+	<select id="bSelectOne" resultType="test.com.todayhome.model.BoardVO" parameterType="test.com.todayhome.model.BoardVO">
+        SELECT
+            b.NUM,
+            b.BOARD_NO,
+            b.NICKNAME,
+            b.TITLE,
+            b.CONTENT,
+            b.IMG_THUMB,
+            b.WDATE,
+            b.VCOUNT,
+            b.TAG,
+            b.M_NUM BRD_MNUM,
+            b.TYPE,
+            b.SQFT,
+            b.FAMILY_TYPE,
+            b.WORKING_AREA,
+            b.WORKER,
+            b.ROOM_NUM,
+            b.DIRECTION,
+            b.YEAR,
+            b.LOCATION,
+            b.LIVINGTYPE,
+            b.COOKTYPE,
+            b.DAILYTYPE,
+            m.IMG MBR_IMG,
+            m.NICKNAME MBR_NICKNAME,
+            m.INTRODUCE MBR_INTRODUCE
+        FROM BOARD b, MEMBER m
+        WHERE b.M_NUM = m.NUM
+          AND b.NUM=#{num}
+    </select>
+    <select id="bSelectMyBoard" resultType="test.com.todayhome.model.BoardVO" parameterType="test.com.todayhome.model.MemberVO">
+        SELECT
+            b.NUM,
+            b.IMG_THUMB,
+            (SELECT COUNT(*) FROM BOARD_COMMENTS WHERE b.NUM = BRD_NUM) CMT_CNT,
+            (SELECT COUNT(*) FROM FAVOR WHERE b.NUM = BRD_NUM) FV_CNT
+        FROM BOARD b
+        WHERE b.M_NUM=#{num}
+        ORDER BY NUM ASC
+    </select>
+    <select id="bSelectFavorBoard" resultType="test.com.todayhome.model.BoardVO" parameterType="test.com.todayhome.model.MemberVO">
+        SELECT
+            b.NUM,
+            b.IMG_THUMB,
+            m.NICKNAME MBR_NICKNAME,
+            m.IMG MBR_IMG,
+            (SELECT COUNT(*) FROM BOARD_COMMENTS WHERE b.NUM = BRD_NUM) CMT_CNT,
+            (SELECT COUNT(*) FROM FAVOR WHERE b.NUM = BRD_NUM) FV_CNT
+        FROM BOARD b, FAVOR f, MEMBER m
+        WHERE b.NUM = f.BRD_NUM
+          AND b.M_NUM = m.NUM
+          AND f.MBR_NUM=#{num}
+        ORDER BY NUM ASC
+    </select>
+
+	<select id="BSELECT_ALL_INTERSECTION" parameterType="java.util.Map" resultType="test.com.todayhome.model.BoardVO">
+	    SELECT
+	    	b.NUM,b.BOARD_NO,b.NICKNAME,b.TITLE,b.CONTENT,b.IMG_THUMB,b.WDATE,b.VCOUNT,b.TAG,b.M_NUM BRD_MNUM,
+            b.TYPE,b.SQFT,b.FAMILY_TYPE,b.WORKING_AREA,b.WORKER,b.ROOM_NUM,b.DIRECTION,b.YEAR,b.LOCATION,
+            m.IMG MBR_IMG,m.NICKNAME MBR_NICKNAME,m.INTRODUCE MBR_INTRODUCE
+             ,(select count(*) from favor where brd_num = b.NUM) as fvCnt
+            <if test='usrMnum > 0'>
+                ,(SELECT count(*) FROM FAVOR f where f.mbr_num = #{usrMnum} AND f.brd_num = b.num) AS FV_YN
+            </if>
+	    FROM board b join member m on (b.m_num=m.num)
+        WHERE board_no = 1
+        <if test="typeKey != null">
+            AND TYPE = #{typeKey}
+        </if>
+        <if test="familytypeKey != null">
+            AND FAMILY_TYPE = #{familytypeKey}
+        </if>
+        <if test="workingareaKey != null">
+            AND WORKING_AREA = #{workingareaKey}
+        </if>
+        <if test="workerKey != null">
+            AND WORKER = #{workerKey}
+        </if>
+        <if test="sortKey=='new'">
+            ORDER BY wdate DESC
+        </if>
+        <if test="sortKey=='old'">
+            ORDER BY wdate ASC
+        </if>
+        <if test="sortKey=='popular'">
+	        ORDER BY
+	            CASE
+	                WHEN (SELECT COUNT(*) FROM favor WHERE brd_num = b.NUM) > 0 THEN (SELECT COUNT(*) FROM favor WHERE brd_num = b.NUM)
+	                ELSE 0
+	            END DESC,
+	            CASE
+	                WHEN (SELECT COUNT(*) FROM favor WHERE brd_num = b.NUM) = 0 THEN b.NUM
+	            END DESC
+        </if>
+
+	</select>
+
+	<select id="BSELECT_ALL_2" parameterType="java.util.Map" resultType="test.com.todayhome.model.BoardVO">
+	    SELECT
+	    	b.NUM,b.BOARD_NO,b.NICKNAME,b.TITLE,b.CONTENT,b.IMG_THUMB,b.WDATE,b.VCOUNT,b.TAG,b.M_NUM BRD_MNUM,
+            b.TYPE,b.SQFT,b.FAMILY_TYPE,b.WORKING_AREA,b.WORKER,b.ROOM_NUM,b.DIRECTION,b.YEAR,b.LOCATION,
+            m.IMG MBR_IMG,m.NICKNAME MBR_NICKNAME,m.INTRODUCE MBR_INTRODUCE
+             ,(select count(*) from favor where brd_num = b.NUM) as fvCnt
+            <if test='usrMnum > 0'>
+                ,(SELECT count(*) FROM FAVOR f where f.mbr_num = #{usrMnum} AND f.brd_num = b.num) AS FV_YN
+            </if>
+	    FROM board b join member m on (b.m_num=m.num)
+        WHERE board_no = 2
+        <if test="livingKey != null">
+            AND livingtype = #{livingKey}
+        </if>
+        <if test="sortKey=='new'">
+            ORDER BY wdate DESC
+        </if>
+        <if test="sortKey=='old'">
+            ORDER BY wdate ASC
+        </if>
+        <if test="sortKey=='popular'">
+        	ORDER BY
+	            CASE
+	                WHEN (SELECT COUNT(*) FROM favor WHERE brd_num = b.NUM) > 0 THEN (SELECT COUNT(*) FROM favor WHERE brd_num = b.NUM)
+	                ELSE 0
+	            END DESC,
+	            CASE
+	                WHEN (SELECT COUNT(*) FROM favor WHERE brd_num = b.NUM) = 0 THEN b.NUM
+	            END DESC
+        </if>
+
+	</select>
+	<select id="BSELECT_ALL_3" parameterType="java.util.Map" resultType="test.com.todayhome.model.BoardVO">
+	    SELECT
+	    	b.NUM,b.BOARD_NO,b.NICKNAME,b.TITLE,b.CONTENT,b.IMG_THUMB,b.WDATE,b.VCOUNT,b.TAG,b.M_NUM BRD_MNUM,
+            b.TYPE,b.SQFT,b.FAMILY_TYPE,b.WORKING_AREA,b.WORKER,b.ROOM_NUM,b.DIRECTION,b.YEAR,b.LOCATION,
+            m.IMG MBR_IMG,m.NICKNAME MBR_NICKNAME,m.INTRODUCE MBR_INTRODUCE
+             ,(select count(*) from favor where brd_num = b.NUM) as fvCnt
+            <if test='usrMnum > 0'>
+                ,(SELECT count(*) FROM FAVOR f where f.mbr_num = #{usrMnum} AND f.brd_num = b.num) AS FV_YN
+            </if>
+	    FROM board b join member m on (b.m_num=m.num)
+        WHERE board_no = 3
+        <if test="cookKey != null">
+            AND cooktype = #{cookKey}
+        </if>
+        <if test="sortKey=='new'">
+            ORDER BY wdate DESC
+        </if>
+        <if test="sortKey=='old'">
+            ORDER BY wdate ASC
+        </if>
+        <if test="sortKey=='popular'">
+        	ORDER BY
+	            CASE
+	                WHEN (SELECT COUNT(*) FROM favor WHERE brd_num = b.NUM) > 0 THEN (SELECT COUNT(*) FROM favor WHERE brd_num = b.NUM)
+	                ELSE 0
+	            END DESC,
+	            CASE
+	                WHEN (SELECT COUNT(*) FROM favor WHERE brd_num = b.NUM) = 0 THEN b.NUM
+	            END DESC
+        </if>
+
+	</select>
+	<select id="BSELECT_ALL_4" parameterType="java.util.Map" resultType="test.com.todayhome.model.BoardVO">
+	    SELECT
+	    	b.NUM,b.BOARD_NO,b.NICKNAME,b.TITLE,b.CONTENT,b.IMG_THUMB,b.WDATE,b.VCOUNT,b.TAG,b.M_NUM BRD_MNUM,
+            b.TYPE,b.SQFT,b.FAMILY_TYPE,b.WORKING_AREA,b.WORKER,b.ROOM_NUM,b.DIRECTION,b.YEAR,b.LOCATION,
+            m.IMG MBR_IMG,m.NICKNAME MBR_NICKNAME,m.INTRODUCE MBR_INTRODUCE
+             ,(select count(*) from favor where brd_num = b.NUM) as fvCnt
+            <if test='usrMnum > 0'>
+                ,(SELECT count(*) FROM FAVOR f where f.mbr_num = #{usrMnum} AND f.brd_num = b.num) AS FV_YN
+            </if>
+	    FROM board b join member m on (b.m_num=m.num)
+        WHERE board_no = 4
+        <if test="dailyKey != null">
+            AND dailytype = #{dailyKey}
+        </if>
+        <if test="sortKey=='new'">
+            ORDER BY wdate DESC
+        </if>
+        <if test="sortKey=='old'">
+            ORDER BY wdate ASC
+        </if>
+        <if test="sortKey=='popular'">
+	    	ORDER BY
+	            CASE
+	                WHEN (SELECT COUNT(*) FROM favor WHERE brd_num = b.NUM) > 0 THEN (SELECT COUNT(*) FROM favor WHERE brd_num = b.NUM)
+	                ELSE 0
+	            END DESC,
+	            CASE
+	                WHEN (SELECT COUNT(*) FROM favor WHERE brd_num = b.NUM) = 0 THEN b.NUM
+	            END DESC
+        </if>
+	</select>
+
+
+
+	<select id="B_VIEWS" resultType="test.com.todayhome.model.BoardVO">
+		select * from (select * from board where board_no=1 order by wdate desc) where rownum &lt;= 8
+	</select>
+	<select id="B_VIEWS_FREE" resultType="test.com.todayhome.model.BoardVO">
+		select * from (select * from board where board_no IN (2, 3, 4) order by wdate desc) where rownum &lt;= 8
+	</select>
+
+	<select id="B_VIEWS2" resultType="test.com.todayhome.model.BoardVO">
+	    SELECT *
+	    FROM (
+	        SELECT b.num, b.board_no, brd_num, COUNT(*) AS row_count, b.img_thumb, b.title
+	        FROM favor f JOIN board b ON (f.brd_num = b.num)
+	        WHERE b.board_no = 1
+	        	AND b.wdate >= SYSDATE - 8
+	        GROUP BY b.num, b.board_no, brd_num, b.img_thumb, b.title
+	        ORDER BY row_count DESC, b.num desc
+	    )
+	    WHERE ROWNUM &lt;= 8
+	</select>
+	<select id="B_VIEWS_FREE2" resultType="test.com.todayhome.model.BoardVO">
+	    SELECT *
+	    FROM (
+	        SELECT b.num, b.board_no, brd_num, COUNT(*) AS row_count, b.img_thumb, b.title
+	        FROM favor f JOIN board b ON (f.brd_num = b.num)
+	        WHERE b.board_no IN (2, 3, 4)
+	        	AND b.wdate >= SYSDATE - 8
+	        GROUP BY b.num, b.board_no, brd_num, b.img_thumb, b.title
+	        ORDER BY row_count DESC, b.num desc
+	    )
+	    WHERE ROWNUM &lt;= 8
+	</select>
+
+	<select id="B_RANDOM" resultType="test.com.todayhome.model.BoardVO">
+		select *
+		from (
+		  select b.num, m.nickname as mbrNickname, m.img as mbrImg, b.img_thumb, b.title
+		  from member m
+		  join board b on m.num = b.m_num
+		  order by dbms_random.value
+		)
+		where rownum = 1
+	</select>
+
+	<select id="BSEARCHLIST_TITLE" resultType="test.com.todayhome.model.BoardVO">
+		select * from board where title like #{searchWord}
+	</select>
+
+	<select id="BSEARCHLIST_MBRNICKNAME" resultType="test.com.todayhome.model.BoardVO">
+		select * from board b join member m on (b.m_num=m.num) 
+		where b.nickname like #{mbrNickname}
+	</select>
+
+</mapper>

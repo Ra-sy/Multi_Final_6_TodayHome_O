@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="test.com.todayhome.mapper">
+    <select id="fvSelectAll" resultType="test.com.todayhome.model.FavorVO" parameterType="test.com.todayhome.model.BoardVO">
+        SELECT
+            f1.MBR_NUM,
+            f1.BRD_NUM,
+            COUNT(f1.MBR_NUM) OVER(PARTITION BY f1.BRD_NUM) CNT,
+            <choose>
+                <when test='usrMnum != null and usrMnum != ""'>
+                    f2.MBR_NUM my_mbr_num
+                </when>
+                <otherwise>
+                    null AS my_mbr_num
+                </otherwise>
+            </choose>
+        FROM FAVOR f1
+            <if test='usrMnum != null and usrMnum != ""'>
+             LEFT JOIN FAVOR f2 ON f1.BRD_NUM = f2.BRD_NUM AND f2.MBR_NUM=#{usrMnum}
+            </if>
+        WHERE f1.BRD_NUM = #{num}
+    </select>
+    <select id="fvSelectAllFromMbr" resultType="test.com.todayhome.model.FavorVO" parameterType="test.com.todayhome.model.MemberVO">
+        SELECT
+            MBR_NUM,
+            BRD_NUM,
+            COUNT(MBR_NUM) OVER(PARTITION BY MBR_NUM) CNT
+        FROM FAVOR
+        WHERE MBR_NUM = #{num}
+    </select>
+    <select id="fvCheck" resultType="test.com.todayhome.model.FavorVO" parameterType="test.com.todayhome.model.BoardVO">
+        SELECT
+            MBR_NUM,
+            BRD_NUM
+        FROM FAVOR
+        WHERE MBR_NUM = #{usrMnum}
+          AND BRD_NUM = #{num}
+    </select>
+
+</mapper>

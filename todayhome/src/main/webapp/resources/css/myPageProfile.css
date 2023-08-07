@@ -1,0 +1,93 @@
+*{
+    margin: 0px;
+    padding: 0px;
+}
+
+a{
+    text-decoration: none;
+}
+
+a:hover{
+    opacity: 80%;
+}
+
+.top-menu{
+    min-width: 500px;
+    padding: 7px 200px;
+    display: flex;
+    justify-content: space-around;
+    border-bottom: 2px solid #dadada;
+    font-family: 'IBM Plex Sans KR', sans-serif;
+    font-weight: bold;
+    background-color: white;
+}
+
+.top-menu-item a{
+    color: black;
+}
+
+.profile{
+    padding: 15px 5%;
+    border-bottom: 2px solid #dadada;
+}
+
+.profile-setting-btn{
+    width: 30px;
+    height: 30px;
+    float: right;
+    opacity: 50%;
+}
+
+.profile-setting-btn:hover{
+    opacity: 30%;
+}
+
+.user-info{
+    padding-top: 30px;
+    overflow: hidden;
+    font-family: 'IBM Plex Sans KR', sans-serif;
+    font-weight: bold;
+}
+
+.user-img img{
+    width : 75px;
+    height : 75px;
+    border-radius: 100%;
+}
+
+.user-text{
+    padding-right: 7px;
+    float: left;
+}
+
+.user-text a{
+    color: #35C5F0;
+}
+
+.followFrom{
+    border-left: 2px solid #dadada;
+    padding-left: 7px;
+}
+
+.favor{
+    border-left: 2px solid #dadada;
+    padding-left: 7px;
+}
+
+.user-text-area {
+    padding-top: 5px;
+    width: fit-content;
+    overflow: hidden;
+}
+
+.content{
+    padding: 0 5%;
+}
+
+.top-menu-item-one a{
+    color: #35c5f0;
+}
+
+.top-menu-item-two a{
+    color: #35c5f0;
+}
